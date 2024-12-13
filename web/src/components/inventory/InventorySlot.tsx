@@ -44,13 +44,13 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
       item: () =>
         isSlotWithItem(item, inventoryType !== InventoryType.SHOP)
           ? {
-              inventory: inventoryType,
-              item: {
-                name: item.name,
-                slot: item.slot,
-              },
-              image: item?.name && `url(${getItemUrl(item) || 'none'}`,
-            }
+            inventory: inventoryType,
+            item: {
+              name: item.name,
+              slot: item.slot,
+            },
+            image: item?.name && `url(${getItemUrl(item) || 'none'}`,
+          }
           : null,
       canDrag,
     }),
@@ -156,26 +156,13 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
               inventoryType === 'player' && item.slot <= 5 ? 'item-hotslot-header-wrapper' : 'item-slot-header-wrapper'
             }
           >
-            {inventoryType === 'player' && item.slot <= 5 && <div className="inventory-slot-number">{item.slot}</div>}
-            <div className="item-slot-info-wrapper">
-              <p>
-                {item.weight > 0
-                  ? item.weight >= 1000
-                    ? `${(item.weight / 1000).toLocaleString('en-us', {
-                        minimumFractionDigits: 2,
-                      })}kg `
-                    : `${item.weight.toLocaleString('en-us', {
-                        minimumFractionDigits: 0,
-                      })}g `
-                  : ''}
-              </p>
-              <p>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
+            <div className="inventory-slot-label-box">
+              <div className="inventory-slot-label-text">
+                {item.metadata?.label ? item.metadata.label : Items[item.name]?.label || item.name}
+              </div>
             </div>
           </div>
           <div>
-            {inventoryType !== 'shop' && item?.durability !== undefined && (
-              <WeightBar percent={item.durability} durability />
-            )}
             {inventoryType === 'shop' && item?.price !== undefined && (
               <>
                 {item?.currency !== 'money' && item.currency !== 'black_money' && item.price > 0 && item.currency ? (
@@ -210,11 +197,23 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
                 )}
               </>
             )}
-            <div className="inventory-slot-label-box">
-              <div className="inventory-slot-label-text">
-                {item.metadata?.label ? item.metadata.label : Items[item.name]?.label || item.name}
-              </div>
+            <div className="item-slot-info-wrapper">
+              <p>
+                {item.weight > 0
+                  ? item.weight >= 1000
+                    ? `${(item.weight / 1000).toLocaleString('en-us', {
+                      minimumFractionDigits: 2,
+                    })}kg `
+                    : `${item.weight.toLocaleString('en-us', {
+                      minimumFractionDigits: 0,
+                    })}g `
+                  : ''}
+              </p>
+              <p>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
             </div>
+            {inventoryType !== 'shop' && item?.durability !== undefined && (
+              <WeightBar percent={item.durability} durability />
+            )}
           </div>
         </div>
       )}

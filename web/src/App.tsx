@@ -17,7 +17,7 @@ debugData([
     action: 'setupInventory',
     data: {
       leftInventory: {
-        id: 'test',
+        id: '5000',
         type: 'player',
         slots: 50,
         label: 'Bob Smith',
@@ -38,22 +38,25 @@ debugData([
             count: 5,
           },
           { slot: 2, name: 'powersaw', weight: 0, count: 1, metadata: { durability: 75 } },
-          { slot: 3, name: 'copper', weight: 100, count: 12, metadata: { type: 'Special' } },
+          { slot: 3, name: 'copper', weight: 100, count: 12, metadata: { durability: 50, type: 'Special' } },
           {
             slot: 4,
             name: 'water',
             weight: 100,
             count: 1,
-            metadata: { description: 'Generic item description' },
+            metadata: {
+              durability: 100,
+              description: 'Generic item description'
+            },
           },
-          { slot: 5, name: 'water', weight: 100, count: 1 },
+          { slot: 5, name: 'water', weight: 100, count: 1, metadata: { durability: 30 } },
           {
             slot: 6,
             name: 'backwoods',
             weight: 100,
             count: 1,
             metadata: {
-              label: 'Russian Cream',
+              label: 'CARD HOLDER',
               imageurl: 'https://i.imgur.com/2xHhTTz.png',
             },
           },
@@ -119,7 +122,7 @@ const App: React.FC = () => {
   );
 };
 
-addEventListener("dragstart", function(event) {
+addEventListener("dragstart", function (event) {
   event.preventDefault()
 })
 

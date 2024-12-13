@@ -1,15 +1,15 @@
-$mainColor: #22232c;
-$textColor: #c1c2c5;
+$mainColor: #1b1d1e;
+$textColor: #e5e7eb;
 $mainFont: Roboto;
 
-$secondaryColor: rgba(12, 12, 12, 0.4);
+$secondaryColor: rgba(20, 21, 22);
 $secondaryColorHighlight: #33343F;
 $secondaryColorLight: rgba(0, 0, 0, 0.5);
 $secondaryColorDark: rgba(12, 12, 12, 0.8);
 
 $gridCols: 5;
 $gridRows: 5;
-$gridSize: 10.2vh;
+$gridSize: 11vh;
 $gridGap: 2px;
 $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
 
@@ -58,7 +58,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .context-menu-list {
   min-width: 200px;
-  background-color: $mainColor;
+  background-color: $secondaryColor;
   color: $textColor;
   padding: 4px;
   border-color: rgba(0, 0, 0, 0.2);
@@ -70,7 +70,7 @@ input[type='number']::-webkit-outer-spin-button {
   flex-direction: column;
 }
 
-.context-menu-item  {
+.context-menu-item {
   padding: 8px;
   border-radius: 4px;
   background-color: transparent;
@@ -80,9 +80,11 @@ input[type='number']::-webkit-outer-spin-button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &:active {
     transform: none;
   }
+
   &:hover {
     background-color: $secondaryColorHighlight;
     cursor: pointer;
@@ -93,7 +95,7 @@ input[type='number']::-webkit-outer-spin-button {
   padding-top: 5px;
 }
 
-.tooltip-markdown > p {
+.tooltip-markdown>p {
   margin: 0;
 }
 
@@ -131,39 +133,43 @@ button:active {
   .inventory-control-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 4px;
     justify-content: center;
     align-items: center;
+    background-color: $secondaryColor;
+    padding: 1em;
   }
 
   .inventory-control-input {
     transition: 200ms;
-    padding: 16px 8px;
+    padding: 14px 8px;
     border-radius: 2.5%;
     font-family: $mainFont;
-    font-size: 16px;
+    font-size: 0.9em;
     text-align: center;
     outline: none;
     border: none;
     color: #fff;
-    background-color: $secondaryColor;
+    background-color: $mainColor;
+
     &:focus-within {
       background-color: $secondaryColorDark;
     }
   }
 
   .inventory-control-button {
-    font-size: 14px;
+    font-size: 0.9em;
+    // font-size: 14px;
     color: #fff;
-    background-color: $secondaryColor;
+    background-color: $mainColor;
     transition: 200ms;
-    padding: 12px 8px;
+    padding: 14px 8px;
     border-radius: 2.5%;
     border: none;
-    text-transform: uppercase;
     font-family: $mainFont;
     width: 100%;
     font-weight: 500;
+
     &:hover {
       background-color: $secondaryColorDark;
     }
@@ -206,6 +212,7 @@ button:active {
   align-items: center;
   border-radius: 4px;
   fill: $textColor;
+
   &:hover {
     background-color: $secondaryColorHighlight;
     cursor: pointer;
@@ -239,6 +246,7 @@ button:active {
   fill: white;
   border-radius: 5% !important;
   background-color: $secondaryColor !important;
+
   &:hover {
     background-color: $secondaryColorDark !important;
     cursor: pointer;
@@ -261,13 +269,17 @@ button:active {
   display: flex;
   flex-direction: column;
   gap: calc($gridGap * 2);
+  background-color: $secondaryColor;
+  padding: 0.6em;
 }
+
 .inventory-grid-header-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   p {
-    font-size: 16px;
+    font-size: 0.8em;
   }
 }
 
@@ -282,7 +294,7 @@ button:active {
 
 // inventory slots
 .inventory-slot {
-  background-color: $secondaryColor;
+  background-color: $mainColor;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 2.5%;
@@ -296,9 +308,9 @@ button:active {
 }
 
 .inventory-slot-label-box {
-  background-color: $mainColor;
+  // background-color: $mainColor;
   color: $textColor;
-  text-align: center;
+  // text-align: center;
   border-bottom-left-radius: 0.25vh;
   border-bottom-right-radius: 0.25vh;
   border-top-color: rgba(0, 0, 0, 0.2);
@@ -311,10 +323,10 @@ button:active {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2px 3px;
   font-weight: 400;
   font-family: $mainFont;
-  font-size: 12px;
+  font-size: 0.5em;
+  padding: 2px;
 }
 
 .inventory-slot-number {
@@ -333,6 +345,7 @@ button:active {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
   p {
     font-size: 12px;
   }
@@ -341,7 +354,7 @@ button:active {
 .item-slot-header-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .item-hotslot-header-wrapper {
@@ -352,11 +365,13 @@ button:active {
 .item-slot-info-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-self: flex-end;
-  padding: 3px;
+  padding: 2px;
   gap: 3px;
+
   p {
-    font-size: 12px;
+    font-size: 0.5em;
   }
 }
 
@@ -366,6 +381,7 @@ button:active {
   justify-content: flex-end;
   align-items: center;
   padding-right: 3px;
+
   p {
     font-size: 14px;
     text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
@@ -377,6 +393,7 @@ button:active {
   flex-direction: row;
   justify-content: flex-end;
   padding-right: 3px;
+
   p {
     font-size: 14px;
     text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
@@ -398,6 +415,7 @@ button:active {
   border-color: rgba(0, 0, 0, 0.2);
   border-style: inset;
   border-width: 1px;
+
   p {
     font-size: 12px;
     font-weight: 400;
@@ -409,6 +427,7 @@ button:active {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   p {
     font-size: 15px;
     font-weight: 400;
@@ -420,9 +439,11 @@ button:active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   svg {
     padding-right: 3px;
   }
+
   p {
     font-size: 14px;
   }
@@ -436,6 +457,7 @@ button:active {
   display: flex;
   flex-direction: row;
   align-items: center;
+
   img {
     width: 28px;
     height: 28px;
@@ -490,6 +512,7 @@ button:active {
   border-top-left-radius: 0.25vh;
   border-top-right-radius: 0.25vh;
   font-family: $mainFont;
+
   p {
     font-size: 11px;
     padding: 2px;
